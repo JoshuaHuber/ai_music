@@ -48,7 +48,7 @@ var getSpotify = function(userInput) {
                                 buildPreview += '<div class="col-md-4 space"><a href="#" class="thumbnail">' 
                                 buildPreview += '<img src="' + tracks[i].album.images[0].url + '"' 
                                 buildPreview += 'alt="' + tracks[i].preview_url + '"></a>' 
-                                buildPreview += tracks[i].name + '<audio controls><source src="' + tracks[i].preview_url + '" type="audio/mp4"></div>'
+                                buildPreview += tracks[i].name + '<br><audio controls><source src="' + tracks[i].preview_url + '" type="audio/mp4"></div>'
                             }
                             console.log(buildTrack);
                             $(".js-search-results").html(buildTrack);
