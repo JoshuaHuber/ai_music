@@ -1,7 +1,8 @@
-# speak-to-spotify
-voice command spotify app 
+# AI Music
 
-This spotify app was the capstone project for thinkful's FED course. 
+voice command Music app 
 
-Hope you enjoy.
+This app is to help you play music with out the need to click around on the keyboard or mouse. 
+
+I hope you enjoy.
 
