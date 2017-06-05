@@ -1,6 +1,5 @@
 .space {
 	padding-bottom: 10px;
-
 }
 .container-fluid {
 	width: 90%;
@@ -14,12 +13,12 @@ p {
 .navbar {
 	margin-bottom: 5px;
 }
-.thumbnail{        
-
+.hide {
+	display:  none;
 }
-.hideMusic {
-	display: none;
+.record {
+	color: red;
 }
-.showMusic {
-	display:;
+.btn:focus,.btn:active {
+   outline: none !important;
 }
