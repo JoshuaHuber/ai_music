@@ -1,4 +1,4 @@
-.space {
+.space{
 	padding-bottom: 10px;
 }
 .container-fluid {
@@ -21,4 +21,12 @@ p {
 }
 .btn:focus,.btn:active {
    outline: none !important;
+}
+.info {
+	margin-bottom: 10px;
+	padding: 10px;
+
+}
+.alert {
+	margin-bottom: 10px;
 }

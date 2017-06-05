@@ -1,7 +1,7 @@
 <!DOCTYPE html>
 <html>
 <head>
-	<title>Music AI</title>
+	<title>AI Music</title>
 	<link rel="stylesheet" href="https://maxcdn.bootstrapcdn.com/bootstrap/3.3.7/css/bootstrap.min.css" integrity="sha384-BVYiiSIFeK1dGmJRAkycuHAHRg32OmUcww7on3RYdg4Va+PmSTsz/K68vbdEjh4u" crossorigin="anonymous">
 	<link rel="stylesheet" type="text/css" href="https://maxcdn.bootstrapcdn.com/font-awesome/4.7.0/css/font-awesome.min.css">
 	<link rel="stylesheet" type="text/css" href="styles/styles.css">
@@ -17,7 +17,7 @@
 				<span class="icon-bar"></span>
 				<span class="icon-bar"></span>
 			</button>
-			<a class="navbar-brand" href="#">Music AI</a>
+			<a class="navbar-brand" href="#">AI Music</a>
 			<form id="js-userSubmit" class="navbar-form navbar-left">
 				<label for="query"></label>
 				<div class="form-group">
@@ -33,17 +33,16 @@
 	</div><!-- /.navbar-collapse -->
 	</div><!-- /.container-fluid -->
 	</nav>
-	<div class="container-fluid alert alert-info alert-dismissible" role="alert">
+	<div class="container-fluid alert alert-info alert-dismissible info" role="alert">
 		<button type="button" class="close" data-dismiss="alert" aria-label="Close"><span aria-hidden="true">&times;</span></button>
-		<strong>Speak:</strong>
-		To use voice recognition click record and say "Play (artist)". <strong> You must use Chrome and allow mic.</strong>
+		<strong>Voice Recognition:</strong>
+		To use voice recognition click record button. <strong> You must use Chrome and allow mic.</strong>
 		<br>
-		"next song" - " last song" - "play" - "pause"
-
+		<strong>Voice Comands: </strong> "Play (artist)" - "next song" - "last song" - "pause" - "play"
 	</div>
 	<div class="container-fluid">
-		<div class="noSongs hide">No Songs Found</div>
-		<iframe id="sc-widget" src="https://w.soundcloud.com/player/?url=https://api.soundcloud.com/users/207963102&amp;auto_play=true" width="100%" height="465" scrolling="no" frameborder="no"></iframe>
+		<div class="alert-warning info noSongs hide">No Songs Found</div>
+		<iframe id="sc-widget" src="https://w.soundcloud.com/player/?url=https://api.soundcloud.com/users/208006719&amp;auto_play=true" width="100%" height="465" scrolling="no" frameborder="no"></iframe>
 	</div>
 
 	<script src="js/annyang.js"></script>

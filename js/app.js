@@ -22,7 +22,6 @@ function getUserInput() {
     })
 }
 function getSoundCloud(userInput){
-    // find all tracks with the genre 'punk' that have a tempo greater than 120 bpm.
     SC.get('/users', {
         q: userInput
     }).then(function(users) {
@@ -32,7 +31,6 @@ function getSoundCloud(userInput){
                 if( users[i].track_count > 5 && users[i].followers_count > 10 && users[i].track_count > 5){
                     var userUrl = users[i].uri;
                     loadSoundCloud(userUrl);
-                    console.log(users[i]);
                     return;
                 }
             }
@@ -45,7 +43,6 @@ function loadSoundCloud(userUrl){
     widget1.load(userUrl, {auto_play: true, limit: 10});
 }
 if (annyang) {
-  // Add our commands to annyang
      annyang.addCommands({
         'hello': function() { alert('Hello world!'); },
         'play *artist' : function(artist){
