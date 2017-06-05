@@ -1,6 +1,5 @@
 .space {
 	padding-bottom: 10px;
-
 }
 .container-fluid {
 	width: 90%;
@@ -13,4 +12,13 @@ p {
 }
 .navbar {
 	margin-bottom: 5px;
+}
+.hide {
+	display:  none;
+}
+.record {
+	color: red;
+}
+.btn:focus,.btn:active {
+   outline: none !important;
 }
