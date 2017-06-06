@@ -26,7 +26,6 @@ function getSoundCloud(userInput){
         q: userInput
     }).then(function(users) {
         if(users.length > 0){
-            console.log(users);
             for(var i = 0; i < users.length; i++){
                 if( users[i].track_count > 5 && users[i].followers_count > 10 && users[i].track_count > 5){
                     var userUrl = users[i].uri;
