@@ -1,84 +1,81 @@
-var buildTrack = '';
-var buildPreview = '';
+$(document).ready(init);
+function init(){
+    getUserInput();
+    SC.initialize({
+      client_id: soundCloudClientID
+    });
+    annyang.abort();
+}
+var iframeElement   = document.querySelector('iframe');
+var iframeElementID = iframeElement.id;
+var widget1         = SC.Widget(iframeElement);
+var widget2         = SC.Widget(iframeElementID);
+var state = true;
 // get input from user...
-getUserInput();
-
 function getUserInput() {
     $("#js-userSubmit").submit(function(event) {
         event.preventDefault();
         var userInput = $("#js-userInput").val();
-        console.log(userInput);
-        getSpotify(userInput);
+        if(userInput.length > 1){
+            getSoundCloud(userInput);
+        }
     })
 }
-
-//send usersInput to spotify api to get json
-
-var getSpotify = function(userInput) {
-    $.getJSON(
-        "https://api.spotify.com/v1/search",          
-    {                                                         
-        q: userInput,
-        limit: 1,                                           
-        type: "artist"                                          
-    },
-        function(receivedApiData) {                               
-            console.log(receivedApiData)                           
-            if(receivedApiData.artists.total == 0) {        
-              alert("No songs found!");                            
+function getSoundCloud(userInput){
+    SC.get('/users', {
+        q: userInput
+    }).then(function(users) {
+        if(users.length > 0){
+            console.log(users);
+            for(var i = 0; i < users.length; i++){
+                if( users[i].track_count > 5 && users[i].followers_count > 10 && users[i].track_count > 5){
+                    var userUrl = users[i].uri;
+                    loadSoundCloud(userUrl);
+                    return;
+                }
             }
-            else {
-                console.log(receivedApiData.artists.items[0].id)
-                var artistId = receivedApiData.artists.items[0].id
-                $('p').html(receivedApiData.artists.items[0].name + "'s Top Tracks");
-                var getTopTracks = function() {
-                    $.getJSON(
-                        'https://api.spotify.com/v1/artists/' + artistId + '/top-tracks?country=US',
-                    {
-                        limit: 5
-                    },
-                        function(recivedTracks) {
-                            var tracks = recivedTracks.tracks;
-                            console.log(recivedTracks.tracks);
-                            for(var i = 0; i < 9; i++){                     // FIX!!!
-                                buildTrack += "<iframe class='col-md-4 space' src='https://embed.spotify.com/?uri=";                            
-                                buildTrack += tracks[i].uri + "' ";
-                                buildTrack += 'width="200" height="300" frameborder="0" allowtransparency="true"></iframe>'
-                                $(".js-search-results").html(buildTrack);
-                                buildPreview += '<div class="col-md-4 space"><a href="#" class="thumbnail">' 
-                                buildPreview += '<img src="' + tracks[i].album.images[0].url + '"' 
-                                buildPreview += 'alt="' + tracks[i].preview_url + '"></a>' 
-                                buildPreview += tracks[i].name + '<br><audio controls><source src="' + tracks[i].preview_url + '" type="audio/mp4"></div>'
-                            }
-                            console.log(buildTrack);
-                            $(".js-search-results").html(buildTrack);
-                            $(".js-preview-results").html(buildPreview);
-                            buildTrack = '';
-                            buildPreview = '';
-
-                        }
-                    );
-                } 
-                getTopTracks();
-               
-            }
+        } else {
+            $('.noSongs').toggleClass('hide')
         }
-    )
+    });
 }
-var state = true;
+function loadSoundCloud(userUrl){
+    widget1.load(userUrl, {auto_play: true, limit: 10});
+}
 if (annyang) {
-  // Add our commands to annyang 
      annyang.addCommands({
         'hello': function() { alert('Hello world!'); },
-        'play *username' : function(username){
-            var userInput = username;
-            console.log(userInput);
-            $('#js-userInput').val(userInput);
-            //$('#userInput').val(username);
-
+        'play *artist' : function(artist){
+            $('#js-userInput').val(artist);
+            getSoundCloud(artist);
+        },
+        'play': function() {
+            widget1.play();
+        },
+        'pause': function() {
+            widget1.pause();
+        },
+        'next *song': function() {
+            widget1.next();
+        },
+        'next': function() {
+            widget1.next();
+        },
+        'previous *song': function() {
+            widget1.prev();
+        },
+        'previous': function() {
+            widget1.prev();
+        },
+        'last *song': function() {
+            widget1.prev();
+        },
+        'last': function() {
+            widget1.prev();
         }
-    }); 
+    });
     $("#mic").click(function() {
+        $(".micFA").toggleClass('record');
          if(state === true) {
             annyang.start();
             annyang.resume();
@@ -89,17 +86,3 @@ if (annyang) {
          }
     });
 }
-
-$("#previewTrack").click(function(){
-    $(".previewTrack").addClass('showMusic');
-    $(".previewTrack").removeClass('hideMusic');
-    $(".fullTrack").addClass('hideMusic');
-    $(".fullTrack").removeClass('showMusic');
-})
-$("#fullTrack").click(function(){
-    $(".fullTrack").addClass('showMusic');
-    $(".fullTrack").removeClass('hideMusic');
-    $(".previewTrack").addClass('hideMusic');
-    $(".previewTrack").removeClass('showMusic');
-})
-
