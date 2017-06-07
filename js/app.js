@@ -1,6 +1,7 @@
 $(document).ready(init);
 function init(){
     getUserInput();
+    closeNav();
     SC.initialize({
       client_id: soundCloudClientID
     });
@@ -10,17 +11,20 @@ var iframeElement   = document.querySelector('iframe');
 var iframeElementID = iframeElement.id;
 var widget1         = SC.Widget(iframeElement);
 var widget2         = SC.Widget(iframeElementID);
-var state = true;
 // get input from user...
 function getUserInput() {
     $("#js-userSubmit").submit(function(event) {
+        $('.noSongs').addClass('hide');
         event.preventDefault();
         var userInput = $("#js-userInput").val();
         if(userInput.length > 1){
             getSoundCloud(userInput);
+        } else {
+            $('#js-userInput').attr('placeholder', "Please Enter An Artist")
         }
     })
 }
+//------------------------- SoundCloud start ---------------------------------
 function getSoundCloud(userInput){
     SC.get('/users', {
         q: userInput
@@ -38,6 +42,9 @@ function getSoundCloud(userInput){
         }
     });
 }
+//------------------------- SoundCloud end ---------------------------------
+//------------------------- annyang start ---------------------------------
+var state = true;
 function loadSoundCloud(userUrl){
     widget1.load(userUrl, {auto_play: true, limit: 10});
 }
@@ -85,3 +92,19 @@ if (annyang) {
          }
     });
 }
+//------------------------- annyang end ---------------------------------
+//------------------------- closeNav ---------------------------------
+function closeNav(){
+    $(document).click(function (event) {
+        var clickover = $(event.target);
+        var hamburger = $('.navbar-toggle');
+        var navBarwindow = $('.navbar-collapse');
+        var opened = navBarwindow.hasClass('in');
+        var ul = $('.scroll-nav');
+        if (opened === true && !clickover.hasClass("navbar-form") && !clickover.hasClass("in") &&
+            !clickover.hasClass("form-control") && !clickover.hasClass("micFA") && !clickover.hasClass('micBtn')) {
+            $(hamburger).click();
+        }
+    });
+}
+//------------------------- closeNav Ends ---------------------------------
