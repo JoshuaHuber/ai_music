@@ -33,11 +33,15 @@ p {
 	border: none;
 	padding-right: 0;
 }
+#sc-widget {
+	margin-top: 4%;
+}
 @media (max-width: 767px) {
 	.navbar-form {
 		padding-right: 15px;
   	}
 }
+/*modal*/
 .myModalLabel {
 	margin-left: 10px;
 }
@@ -60,3 +64,4 @@ p {
 .modalMicBtn {
 	margin-top: 25px;
 }
+/* end modal*/
