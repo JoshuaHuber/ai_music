@@ -36,6 +36,18 @@ p {
 @media (max-width: 767px) {
 	.navbar-form {
 		padding-right: 15px;
-
   	}
+}
+.comands{
+	width: 50%;
+	display: inline-block;
+	padding-left: 60px;
+}
+.modalMic {
+	width: 49%;
+	display: inline-block;
+	vertical-align: top;
+}
+.modalMicBtn {
+	margin-top: 10px;
 }
