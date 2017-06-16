@@ -2,11 +2,12 @@ $(document).ready(init);
 function init(){
     getUserInput();
     closeNav();
-    modal();
     SC.initialize({
       client_id: soundCloudClientID
     });
     annyang.abort();
+    modal();
+    micBtn();
 }
 var iframeElement   = document.querySelector('iframe');
 var iframeElementID = iframeElement.id;
@@ -121,5 +122,11 @@ function closeNav(){
 //------------------------- modal starts ---------------------------------
 function modal(){
     $('#myModal').modal('show')
+}
+function micBtn(){
+    $('#modalMic').click(function(){
+        $('#myModal').modal('hide');
+        $("#mic").click();
+    })
 }
 //------------------------- modal Ends ---------------------------------
