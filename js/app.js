@@ -2,6 +2,7 @@ $(document).ready(init);
 function init(){
     getUserInput();
     closeNav();
+    modal();
     SC.initialize({
       client_id: soundCloudClientID
     });
@@ -58,13 +59,22 @@ if (annyang) {
         'play': function() {
             widget1.play();
         },
+        'resume': function() {
+            widget1.play();
+        },
         'pause': function() {
+            widget1.pause();
+        },
+        'stop': function() {
             widget1.pause();
         },
         'next *song': function() {
             widget1.next();
         },
         'next': function() {
+            widget1.next();
+        },
+        'skip': function() {
             widget1.next();
         },
         'previous *song': function() {
@@ -108,3 +118,8 @@ function closeNav(){
     });
 }
 //------------------------- closeNav Ends ---------------------------------
+//------------------------- modal starts ---------------------------------
+function modal(){
+    $('#myModal').modal('show')
+}
+//------------------------- modal Ends ---------------------------------
