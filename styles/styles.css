@@ -33,9 +33,35 @@ p {
 	border: none;
 	padding-right: 0;
 }
+#sc-widget {
+	margin-top: 4%;
+}
 @media (max-width: 767px) {
 	.navbar-form {
 		padding-right: 15px;
-
   	}
 }
+/*modal*/
+.myModalLabel {
+	margin-left: 10px;
+}
+.comands{
+	width: 50%;
+	display: inline-block;
+	padding-left: 70px;
+}
+.comands div{
+	font-weight: bold;
+}
+.modalMic {
+	width: 49%;
+	display: inline-block;
+	vertical-align: top;
+}
+.modalMic div {
+	text-align: center;
+}
+.modalMicBtn {
+	margin-top: 25px;
+}
+/* end modal*/

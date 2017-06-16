@@ -34,12 +34,47 @@
 		</div><!-- /.navbar-collapse -->
 	</div><!-- /.container-fluid -->
 	</nav>
-	<div class="container-fluid alert alert-info alert-dismissible info" role="alert">
-		<button type="button" class="close" data-dismiss="alert" aria-label="Close"><span aria-hidden="true">&times;</span></button>
-		<strong>Voice Recognition:</strong>
-		To use voice recognition click the record button. <strong> You must use <a target="_blank" href="https://www.google.com/chrome/index.html" >Google Chrome</a> and allow mic.</strong>
-		<br>
-		<strong>Voice Comands: </strong> "Play (artist)" - "next song" - "last song" - "pause" - "play"
+	<!-- Modal -->
+	<div class="modal fade" id="myModal" tabindex="-1" role="dialog" aria-labelledby="myModalLabel">
+		<div class="modal-dialog" role="document">
+			<div class="modal-content">
+				<div class="modal-header">
+					<button type="button" class="close" data-dismiss="modal" aria-label="Close"><span aria-hidden="true">&times;</span></button>
+					<h4 class="modal-title" id="myModalLabel">ai Music</h4>
+				</div>
+				<div class="modal-body">
+					Welcome to ai Music where you can control music with your voice.  Please use
+					<a target="_blank" href="https://www.google.com/chrome/index.html" >Google Chrome</a>
+					and allow the use of your mic to use voice recognition.
+				</div>
+				<div class="modal-body comands">
+					<div>Voice comands include:</div>
+					<ul>
+						<li>Play (artist name)</li>
+						<li>Pause</li>
+						<li>Stop</li>
+						<li>Resume</li>
+						<li>Play</li>
+						<li>Next Song</li>
+						<li>Skip</li>
+						<li>Previous Song</li>
+						<li>Last Song</li>
+					</ul>
+				</div>
+				<div class="modal-body modalMic">
+					To start or stop speaking to ai Music just click the mic button.
+					<br>
+					<div>
+						<button id="modalMic" type="button" class="btn btn-default micBtn modalMicBtn">
+							<span class="fa fa-2x fa-microphone" aria-hidden="true"></span>
+						</button>
+					</div>
+				</div>
+				<div class="modal-footer">
+					<button type="button" class="btn btn-default" data-dismiss="modal">Close</button>
+				</div>
+			</div>
+		</div>
 	</div>
 	<div class="container-fluid">
 		<div class="alert-warning info noSongs hide">No Songs Found</div>

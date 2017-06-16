@@ -6,6 +6,8 @@ function init(){
       client_id: soundCloudClientID
     });
     annyang.abort();
+    modal();
+    micBtn();
 }
 var iframeElement   = document.querySelector('iframe');
 var iframeElementID = iframeElement.id;
@@ -58,13 +60,22 @@ if (annyang) {
         'play': function() {
             widget1.play();
         },
+        'resume': function() {
+            widget1.play();
+        },
         'pause': function() {
+            widget1.pause();
+        },
+        'stop': function() {
             widget1.pause();
         },
         'next *song': function() {
             widget1.next();
         },
         'next': function() {
+            widget1.next();
+        },
+        'skip': function() {
             widget1.next();
         },
         'previous *song': function() {
@@ -108,3 +119,14 @@ function closeNav(){
     });
 }
 //------------------------- closeNav Ends ---------------------------------
+//------------------------- modal starts ---------------------------------
+function modal(){
+    $('#myModal').modal('show')
+}
+function micBtn(){
+    $('#modalMic').click(function(){
+        $('#myModal').modal('hide');
+        $("#mic").click();
+    })
+}
+//------------------------- modal Ends ---------------------------------
