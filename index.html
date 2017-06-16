@@ -1,7 +1,7 @@
 <!DOCTYPE html>
 <html>
 <head>
-	<title>AI Music</title>
+	<title>ai Music</title>
 	<link rel="stylesheet" href="https://maxcdn.bootstrapcdn.com/bootstrap/3.3.7/css/bootstrap.min.css" integrity="sha384-BVYiiSIFeK1dGmJRAkycuHAHRg32OmUcww7on3RYdg4Va+PmSTsz/K68vbdEjh4u" crossorigin="anonymous">
 	<link rel="stylesheet" type="text/css" href="https://maxcdn.bootstrapcdn.com/font-awesome/4.7.0/css/font-awesome.min.css">
 	<link rel="icon" href="favicon.ico">
@@ -18,34 +18,68 @@
 				<span class="icon-bar"></span>
 				<span class="icon-bar"></span>
 			</button>
-			<a class="navbar-brand" href="#">AI Music</a>
-			<form id="js-userSubmit" class="navbar-form navbar-left">
+			<a class="navbar-brand" href="#">ai Music</a>
+		</div>
+		<div class="collapse navbar-collapse " id="bs-example-navbar-collapse-1">
+			<form id="js-userSubmit" class="navbar-form navbar-right">
 				<label for="query"></label>
 				<div class="form-group">
 					<input id="js-userInput" class="speech-input form-control" type="text" name="" x-webkit-speech placeholder="Artist Name">
 				</div>
 				<button type="submit" class="btn btn-default">Search</button>
-				<button id="mic" type="button" class="btn btn-default">
+				<button id="mic" type="button" class="btn btn-default micBtn">
 					<span class="micFA fa fa-microphone" aria-hidden="true"></span>
 				</button>
 			</form>
-			<div id="moveTo"></div>
-		</div>
-	</div><!-- /.navbar-collapse -->
+		</div><!-- /.navbar-collapse -->
 	</div><!-- /.container-fluid -->
 	</nav>
-	<div class="container-fluid alert alert-info alert-dismissible info" role="alert">
-		<button type="button" class="close" data-dismiss="alert" aria-label="Close"><span aria-hidden="true">&times;</span></button>
-		<strong>Voice Recognition:</strong>
-		To use voice recognition click record button. <strong> You must use Chrome and allow mic.</strong>
-		<br>
-		<strong>Voice Comands: </strong> "Play (artist)" - "next song" - "last song" - "pause" - "play"
+	<!-- Modal -->
+	<div class="modal fade" id="myModal" tabindex="-1" role="dialog" aria-labelledby="myModalLabel">
+		<div class="modal-dialog" role="document">
+			<div class="modal-content">
+				<div class="modal-header">
+					<button type="button" class="close" data-dismiss="modal" aria-label="Close"><span aria-hidden="true">&times;</span></button>
+					<h4 class="modal-title" id="myModalLabel">ai Music</h4>
+				</div>
+				<div class="modal-body">
+					Welcome to ai Music where you can control music with your voice.  Please use
+					<a target="_blank" href="https://www.google.com/chrome/index.html" >Google Chrome</a>
+					and allow the use of your mic to use voice recognition.
+				</div>
+				<div class="modal-body comands">
+					<div>Voice comands include:</div>
+					<ul>
+						<li>Play (artist name)</li>
+						<li>Pause</li>
+						<li>Stop</li>
+						<li>Resume</li>
+						<li>Play</li>
+						<li>Next Song</li>
+						<li>Skip</li>
+						<li>Previous Song</li>
+						<li>Last Song</li>
+					</ul>
+				</div>
+				<div class="modal-body modalMic">
+					To start or stop speaking to ai Music just click the mic button.
+					<br>
+					<div>
+						<button id="modalMic" type="button" class="btn btn-default micBtn modalMicBtn">
+							<span class="fa fa-2x fa-microphone" aria-hidden="true"></span>
+						</button>
+					</div>
+				</div>
+				<div class="modal-footer">
+					<button type="button" class="btn btn-default" data-dismiss="modal">Close</button>
+				</div>
+			</div>
+		</div>
 	</div>
 	<div class="container-fluid">
 		<div class="alert-warning info noSongs hide">No Songs Found</div>
-		<iframe id="sc-widget" src="https://w.soundcloud.com/player/?url=https://api.soundcloud.com/users/926246&amp;auto_play=true" width="100%" height="465" scrolling="no" frameborder="no"></iframe>
+		<iframe id="sc-widget" src="https://w.soundcloud.com/player/?url=https://api.soundcloud.com/users/926246" width="100%" height="500" scrolling="no" frameborder="no"></iframe>
 	</div>
-
 	<script src="js/annyang.js"></script>
 	<script src="https://ajax.googleapis.com/ajax/libs/jquery/1.12.4/jquery.min.js"></script>
 	<script src="https://maxcdn.bootstrapcdn.com/bootstrap/3.3.7/js/bootstrap.min.js" integrity="sha384-Tc5IQib027qvyjSMfHjOMaLkfuWVxZxUPnCJA7l2mCWNIpG9mGCD8wGNIcPD7Txa" crossorigin="anonymous"></script>
